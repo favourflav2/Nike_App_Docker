@@ -116,6 +116,45 @@ export default function ProfilePage(props: IProfilePageProps) {
   };
   const [sliderRef, setSliderRef] = React.useState<any>(null);
 
+  const trending3 = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+    ]
+  };
+  const [sliderRef2, setSliderRef2] = React.useState<any>(null);
+
   React.useEffect(() => {
     if (likedShoes.length === 0) {
       dispatch(getLikedShoes());
@@ -194,7 +233,7 @@ export default function ProfilePage(props: IProfilePageProps) {
               </div>
 
               {/* Slider */}
-              <Slider {...trending2} ref={setSliderRef}>
+              <Slider {...trending3} ref={setSliderRef2}>
                 {likedShoes?.map((item: any, index: any) => (
                   <TrendingCard item={item} key={index} />
                 ))}
