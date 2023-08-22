@@ -93,7 +93,7 @@ export default function ProfilePage(props: IProfilePageProps) {
     }
   }, []); // eslint-disable-line
 
-  const yes = true
+  
 
   return (
     <div className="w-full h-full md:px-10 px-3 py-5">
@@ -144,19 +144,8 @@ export default function ProfilePage(props: IProfilePageProps) {
                 </div>
               </div>
             </div>
-          </div>
-        )}
-
-        {tabValue === "inbox" && (
-          <div className="w-full h-auto flex items-center justify-center flex-col pb-[400px] pt-[100px]">
-            <h1 className="text-[20px] font-medium">No Messgaes</h1>
-            <h1>Messages and notifications from Nike will show up here.</h1>
-          </div>
-        )}
-
-        {/* Favorites */}
-        {tabValue === "profile" && (
-          <div className="w-full h-auto  my-20">
+            
+            <div className="w-full h-auto  my-20">
             <div className="w-full h-full flex flex-col">
               {/* Title */}
               <div className="flex items-center justify-between">
@@ -183,7 +172,18 @@ export default function ProfilePage(props: IProfilePageProps) {
               </Slider>
             </div>
           </div>
+
+          </div>
         )}
+
+        {tabValue === "inbox" && (
+          <div className="w-full h-auto flex items-center justify-center flex-col pb-[400px] pt-[100px]">
+            <h1 className="text-[20px] font-medium">No Messgaes</h1>
+            <h1>Messages and notifications from Nike will show up here.</h1>
+          </div>
+        )}
+
+        
 
         {tabValue === "favorites" && (
           <div className="w-full flex flex-col h-auto">
