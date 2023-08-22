@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useParams } from "react-router-dom";
-import { useMediaQuery, IconButton,  Tooltip } from "@mui/material";
+import { useMediaQuery, IconButton, Tooltip, CircularProgress } from "@mui/material";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -36,7 +36,7 @@ export default function ItemDetails(props: IItemDetailsProps) {
   const [rev, setRev] = React.useState(false);
   const [addToCartError, setAddToCartError] = React.useState(false);
   const dispatch = Dispatch();
-  const { likedShoes, user, error: authError } = UseSelector((state) => state.auth);
+  const { likedShoes, user, error: authError, loading } = UseSelector((state) => state.auth);
   const { cart } = UseSelector((state) => state.cart);
   const unique_id = uuid();
   const small_id = unique_id.slice(0, 8);
@@ -54,7 +54,7 @@ export default function ItemDetails(props: IItemDetailsProps) {
   //     (item) => item.name === name && item.id === Number(id)
   //   );
 
-  const singleItem = React.useMemo(() => staleData.find((item) => item.name === name), [ name]);
+  const singleItem = React.useMemo(() => staleData.find((item) => item.name === name), [name]);
   //const singleItem = staleData.find((item) => item.name === name)
 
   const [nav1, setNav1] = React.useState<any>();
@@ -69,20 +69,20 @@ export default function ItemDetails(props: IItemDetailsProps) {
     window.scrollTo(0, 0);
     executeScroll();
     //dispatch(setError());
-  }, [id, name, cart,dispatch]); // eslint-disable-line
+  }, [id, name, cart, dispatch]); // eslint-disable-line
   React.useEffect(() => {
     if (authError) {
       toast.error(authError);
     }
   }, [authError]);
-  React.useEffect(()=>{
-    if(likedShoes.length === 0){
-      if(user?.user){
-        dispatch(getLikedShoes())
-      dispatch(setError())
+  React.useEffect(() => {
+    if (likedShoes.length === 0) {
+      if (user?.user) {
+        dispatch(getLikedShoes());
+        dispatch(setError());
       }
     }
-  },[])// eslint-disable-line
+  }, []); // eslint-disable-line
 
   const settings = {
     className: "center",
@@ -146,7 +146,6 @@ export default function ItemDetails(props: IItemDetailsProps) {
     return <ArrowForwardIosIcon className={className} style={{ ...style, display: "block", color: "black" }} onClick={onClick} />;
   }
 
-  
   React.useEffect(() => {
     window.scrollTo(0, 0);
     executeScroll();
@@ -155,6 +154,7 @@ export default function ItemDetails(props: IItemDetailsProps) {
   //console.log(singleItem)
   //console.log(addToCartError)
   //console.log(cart)
+
 
   return (
     <div className="w-full h-full">
@@ -324,12 +324,18 @@ export default function ItemDetails(props: IItemDetailsProps) {
                 </button>
                 {User ? (
                   shoeFind?.name === name ? (
-                    <button
-                      className="bg-white text-black border border-gray-400 p-4 min-w-[60%] rounded-3xl  hover:bg-gray-300 my-1 hover:border  "
-                      onClick={() => dispatch(likeShoe({ shoeData: singleItem }))}
-                    >
-                      Favorite <FavoriteIcon className="text-sm text-red-500" />
-                    </button>
+                    loading ? (
+                      <CircularProgress />
+                    ) : (
+                      <button
+                        className="bg-white text-black border border-gray-400 p-4 min-w-[60%] rounded-3xl  hover:bg-gray-300 my-1 hover:border  "
+                        onClick={() => dispatch(likeShoe({ shoeData: singleItem }))}
+                      >
+                        Favorite <FavoriteIcon className="text-sm text-red-500" />
+                      </button>
+                    )
+                  ) : loading ? (
+                    <CircularProgress />
                   ) : (
                     <button
                       className="bg-white text-black border border-gray-400 p-4 min-w-[60%] rounded-3xl  hover:bg-gray-300 my-1 hover:border  "
@@ -466,10 +472,10 @@ export default function ItemDetails(props: IItemDetailsProps) {
 
             {/* Slider */}
             <Slider {...trending2} ref={setSliderRef}>
-                {staleData?.map((item: any, index: any) => (
-                  <LatestShoeCard item={item} key={index} />
-                ))}
-              </Slider>
+              {staleData?.map((item: any, index: any) => (
+                <LatestShoeCard item={item} key={index} />
+              ))}
+            </Slider>
           </div>
         </div>
       </div>
@@ -599,15 +605,21 @@ export default function ItemDetails(props: IItemDetailsProps) {
             </button>
             {User ? (
               shoeFind?.name === name ? (
-                <button
-                  className="bg-white text-black border border-gray-400 p-4 w-full rounded-3xl  hover:bg-gray-300 my-2 hover:border  "
-                  onClick={() => dispatch(likeShoe({ shoeData: singleItem }))}
-                >
-                  Favorite <FavoriteIcon className="text-sm text-red-500" />
-                </button>
+                loading ? (
+                  <CircularProgress />
+                ) : (
+                  <button
+                    className="bg-white text-black border border-gray-400 p-4 w-full rounded-3xl  hover:bg-gray-300 my-1 hover:border  "
+                    onClick={() => dispatch(likeShoe({ shoeData: singleItem }))}
+                  >
+                    Favorite <FavoriteIcon className="text-sm text-red-500" />
+                  </button>
+                )
+              ) : loading ? (
+                <CircularProgress />
               ) : (
                 <button
-                  className="bg-white text-black border border-gray-400 p-4 w-full rounded-3xl  hover:bg-gray-300 my-2 hover:border  "
+                  className="bg-white text-black border border-gray-400 p-4 w-full rounded-3xl  hover:bg-gray-300 my-1 hover:border  "
                   onClick={() => dispatch(likeShoe({ shoeData: singleItem }))}
                 >
                   Favorite <FavoriteBorderIcon className="text-sm" />
@@ -615,7 +627,7 @@ export default function ItemDetails(props: IItemDetailsProps) {
               )
             ) : (
               <Tooltip title="If you login you will be able to save shoes to your favorites">
-                <button className="bg-white text-black border border-gray-400 p-4 w-full rounded-3xl  hover:bg-gray-300 my-2 hover:border  ">
+                <button className="bg-white text-black border border-gray-400 p-4 w-full rounded-3xl  hover:bg-gray-300 my-1 hover:border  ">
                   Favorite <FavoriteBorderIcon className="text-sm" />
                 </button>
               </Tooltip>
@@ -738,10 +750,10 @@ export default function ItemDetails(props: IItemDetailsProps) {
 
               {/* Slider */}
               <Slider {...trending} ref={setSliderRef}>
-                  {staleData?.map((item: any, index: any) => (
-                    <LatestShoeCard item={item} key={index} />
-                  ))}
-                </Slider>
+                {staleData?.map((item: any, index: any) => (
+                  <LatestShoeCard item={item} key={index} />
+                ))}
+              </Slider>
             </div>
           </div>
         </div>
