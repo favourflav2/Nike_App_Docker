@@ -8,6 +8,7 @@ import { env } from "custom-env";
 import authRoutes from "./routes/authRoutes.js";
 import Stripe from "stripe";
 import pg from "pg";
+import bodyParser from "body-parser";
 env(true);
 
 const app = express();
@@ -21,14 +22,14 @@ pool.on("error", (err, client) => {
   process.exit(-1);
 });
 
-
+const endPoinst = 'whsec_lod2wBArrj8FRrGd0xIPU90vd7i1IQ5m'
 
 
 // Middleware
 dotenv.config();
 app.use(cors());
 app.use(morgan("dev"));
-app.post("/webhook", express.raw({ type: "application/json" }), async (request, response) => {
+app.post("/webhook", bodyParser.raw({ type: "application/json" }), async (request, response) => {
   const sig = request.headers["stripe-signature"];
 
   let event;
@@ -36,7 +37,7 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (request, 
   let eventType;
 
   try {
-    event = stripe.webhooks.constructEvent(request.body, sig, process.env.ENDPOINT_SECRET);
+    event = stripe.webhooks.constructEvent(request.body, sig, endPoinst);
     console.log("Webhook Verified");
   } catch (err) {
     console.log(`Webhook Error: ${err.message}`);
