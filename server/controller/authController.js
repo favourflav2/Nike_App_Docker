@@ -188,8 +188,8 @@ export async function stripe_Payment_Guest(req, res) {
       customer: customer.id,
       line_items,
       mode: "payment",
-      success_url: "http://localhost:3000/success",
-      cancel_url: "http://localhost:3000/error",
+      success_url: `${process.env.NODE_ENV === "production" ? "https://nike-eccomerce-wtls.onrender.com/success" : "http://localhost:3000/success"}`,
+      cancel_url:`${process.env.NODE_ENV === "production" ? "https://nike-eccomerce-wtls.onrender.com/error" : "http://localhost:3000/error"}`,
     });
 
     res.json({ url: session.url });
