@@ -1,7 +1,9 @@
 import axios from 'axios'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const API = axios.create({baseURL:'http://localhost:5001'})
+const devEnv = process.env.NODE_ENV !== "production"
+
+const API = axios.create({baseURL:`${devEnv ? process.env.REACT_APP_LOCALHOST_API : process.env.REACT_APP_PROD_API }`})
 
 API.interceptors.request.use((req)=>{
     if(localStorage.getItem('profile')){
@@ -40,7 +42,7 @@ export function get_All_Orders(){
 
 export const cachedApiCalls = createApi({
     reducerPath:"cachedApiCalls",
-    baseQuery: fetchBaseQuery({baseUrl:`http://localhost:5001`}),
+    baseQuery: fetchBaseQuery({baseUrl:`${devEnv ? process.env.REACT_APP_LOCALHOST_API : process.env.REACT_APP_PROD_API }`}),
     endpoints: (builder) => ({
         getAllOrders: builder.query<any,void>({
             query: () => ({
