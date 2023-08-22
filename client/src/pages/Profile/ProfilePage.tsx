@@ -213,33 +213,35 @@ export default function ProfilePage(props: IProfilePageProps) {
               </div>
             </div>
             
-            <div className="w-full h-auto  my-20">
-            <div className="w-full h-full flex flex-col">
-              {/* Title */}
-              <div className="flex items-center justify-between">
-                <h1 className="text-[25px] font-semibold my-2">Favorites</h1>
+            
+
+          <div className="w-full h-auto  my-20">
+              <div className="w-full h-full flex flex-col">
+                {/* Title */}
+                <div className="flex items-center justify-between">
+                  <h1 className="text-[25px] font-semibold my-2">You Might Also Like</h1>
+                </div>
+
+                <div className="w-full h-auto justify-end flex">
+                  <IconButton onClick={sliderRef?.slickPrev} className=" mr-2">
+                    <ArrowBackIosIcon />
+                  </IconButton>
+
+                  {/* Forward Button */}
+
+                  <IconButton onClick={sliderRef?.slickNext} className=" ">
+                    <ArrowForwardIosIcon />
+                  </IconButton>
+                </div>
+
+                {/* Slider */}
+                <Slider {...trending2} ref={setSliderRef}>
+                  {look?.map((item: any, index: any) => (
+                    <TrendingCard item={item} key={index} />
+                  ))}
+                </Slider>
               </div>
-
-              <div className="w-full h-auto justify-end flex">
-                <IconButton onClick={sliderRef?.slickPrev} className=" mr-2">
-                  <ArrowBackIosIcon />
-                </IconButton>
-
-                {/* Forward Button */}
-
-                <IconButton onClick={sliderRef?.slickNext} className=" ">
-                  <ArrowForwardIosIcon />
-                </IconButton>
-              </div>
-
-              {/* Slider */}
-              <Slider {...trending3} ref={setSliderRef2}>
-                {likedShoes?.map((item: any, index: any) => (
-                  <TrendingCard item={item} key={index} />
-                ))}
-              </Slider>
             </div>
-          </div>
 
           </div>
         )}
