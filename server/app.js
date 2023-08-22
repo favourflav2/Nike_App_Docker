@@ -20,12 +20,7 @@ pool.on("error", (err, client) => {
   console.error("Unexpected error on idle client", err);
   process.exit(-1);
 });
-const endpoint = await stripe.webhookEndpoints.create({
-  url: 'https://nike-eccomerce-wtls.onrender.com/webhook',
-  enabled_events: [
-    'checkout.session.completed',
-  ],
-});
+
 
 
 
@@ -41,7 +36,7 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (request, 
   let eventType;
 
   try {
-    event = stripe.webhooks.constructEvent(request.body, sig, endpoint?.secret);
+    event = stripe.webhooks.constructEvent(request.body, sig, process.env.ENDPOINT_SECRET);
     console.log("Webhook Verified");
   } catch (err) {
     console.log(`Webhook Error: ${err.message}`);
@@ -144,4 +139,4 @@ app.use("/auth", authRoutes);
 
 console.log(process.env.NODE_ENV);
 console.log(process.env.ENDPOINT_SECRET)
-console.log(endpoint)
+

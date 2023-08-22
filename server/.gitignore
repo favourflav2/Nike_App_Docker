@@ -1,4 +1,4 @@
 .env
-.env.prod
+.env.production
 .env.development
 node_modules
