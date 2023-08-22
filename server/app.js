@@ -22,7 +22,7 @@ pool.on("error", (err, client) => {
   process.exit(-1);
 });
 
-const endPoinst = 'whsec_lod2wBArrj8FRrGd0xIPU90vd7i1IQ5m'
+const endPoint = `${process.env.ENDPOINT_SECRET}` 
 
 
 // Middleware
@@ -37,7 +37,7 @@ app.post("/webhook", bodyParser.raw({ type: "application/json" }), async (reques
   let eventType;
 
   try {
-    event = stripe.webhooks.constructEvent(request.body, sig, endPoinst);
+    event = stripe.webhooks.constructEvent(request.body, sig, endPoint);
     console.log("Webhook Verified");
   } catch (err) {
     console.log(`Webhook Error: ${err.message}`);
@@ -139,5 +139,5 @@ app.use("/data", shoeData);
 app.use("/auth", authRoutes);
 
 console.log(process.env.NODE_ENV);
-console.log(process.env.ENDPOINT_SECRET)
+
 
