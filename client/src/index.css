@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
+
+html,body,#root, .app{
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+
+
+.firstBox{
+  background-color: #0066b2;
+}
+
+.thirdBox{
+  background: #000000;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.footer{
+  background-color: #111111;
+}
+
+.slick-center div{
+  background-color: #000000 !important;
+  border-radius: 16px !important;
+}
+
+
+
+.slick-track {
+  height: auto  !important;
+}
+
+#root > div > div.w-full.h-full > div.w-full.h-full.lg\:flex.hidden.flex-col > div.grid.grid-cols-\[60\%_40\%\].w-full > div.w-full.h-full.flex.p-10.justify-center > div.slick-slider.mt-3.lg\:w-\[100px\].w-\[80px\].lg\:h-\[500px\].slick-vertical.slick-initialized > div > div > div.slick-slide.slick-active.slick-center.slick-current > div > span{
+  background-color: #000000 !important;
+  border-radius: 16px !important;
+  opacity: 0.7;
+}
+
+/* Category Stick Div */
+.shrink{
+  height: 60px;
+}
+
+.pathName{
+  display: none;
+}
+
+.genderPathName{
+  font-size: 20px;
+}
+
+.sideBar{
+  top:60px;
+}
+
+
+
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #949494 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 11px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #949494;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+  }
+
+  /* Tabs */
+  .css-8tofx3-MuiButtonBase-root-MuiTab-root.Mui-selected{
+    color: black !important;
+  }
