@@ -93,6 +93,8 @@ export default function ProfilePage(props: IProfilePageProps) {
     }
   }, []); // eslint-disable-line
 
+  const yes = true
+
   return (
     <div className="w-full h-full md:px-10 px-3 py-5">
       {/* Content */}
@@ -187,17 +189,29 @@ export default function ProfilePage(props: IProfilePageProps) {
           <div className="w-full flex flex-col h-auto">
             <h1 className="text-[25px] font-semibold mb-10">Favorites</h1>
 
-            {likedShoes?.length <= 0 ? (
-              <div className="w-full h-auto flex">
-                <h1 className="font-bold">You Currently Dont Have Any Favorite Shoes</h1>
-              </div>
-            ) : (
+            {loading ? 
+            (
               <div className="w-full h-auto grid 2xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 pb-[100px]">
-                {likedShoes?.map((item: any, index: any) => (
-                  <TrendingCard item={item} key={index} />
-                ))}
-              </div>
-            )}
+                  {Array.from(Array(5).keys())?.map((item: any, index: any) => (
+                    <Skeleton  variant="rectangular" key={index} className="h-[300px]"/>
+                  ))}
+                </div>
+            )
+            :
+            (
+              likedShoes?.length <= 0 ? (
+                <div className="w-full h-auto flex">
+                  <h1 className="font-bold">You Currently Dont Have Any Favorite Shoes</h1>
+                </div>
+              ) : (
+                <div className="w-full h-auto grid 2xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 pb-[100px]">
+                  {likedShoes?.map((item: any, index: any) => (
+                    <TrendingCard item={item} key={index} />
+                  ))}
+                </div>
+              )
+            )
+            }
 
             <div className="w-full h-auto  my-20">
               <div className="w-full h-full flex flex-col">
@@ -231,7 +245,16 @@ export default function ProfilePage(props: IProfilePageProps) {
 
         {tabValue === "orders" && (
           <div className="w-full h-auto flex flex-col justify-center items-center">
-            {orders?.length <= 0 ? 
+            {loading ? 
+            (
+              <div className="2xl:w-[55%] xl:w-[60%] lg:w-[75%] md:w-[85%] sm:w-[95%] w-full h-auto flex flex-col ">
+                  <Skeleton variant="rectangular" className="w-full h-[200px] my-2"/>
+                  <Skeleton variant="rectangular"  className="w-full h-[200px] my-2"/>
+              </div>
+            )
+            :
+            (
+              orders?.length <= 0 ? 
             (
               <div className="w-full h-[500px] flex flex-col">
                 <h1 className="md:text-[30px] text-[20px] font-bold mb-8">Orders</h1>
@@ -243,6 +266,7 @@ export default function ProfilePage(props: IProfilePageProps) {
               <div className="2xl:w-[55%] xl:w-[60%] lg:w-[75%] md:w-[85%] sm:w-[95%] w-full h-auto flex flex-col">
               {loading ? <Skeleton height={200} /> : orders?.map((item: any, index: any) => <OrdersCard item={item} key={index} />)}
             </div>
+            )
             )
             }
           </div>
