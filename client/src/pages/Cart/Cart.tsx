@@ -230,7 +230,7 @@ export default function Cart(props: ICartProps) {
 
               <hr className="border border-gray-200 mt-4 mb-4" />
 
-              <button className={` rounded-full p-4 mt-3 mb-3 ${!cart?.length ? "bg-gray-200 text-black/30":"bg-black text-white hover:bg-gray-900"}`} disabled={cart?.length <=0} onClick={()=>{
+              <button className={` rounded-full p-4 mt-3 mb-3 ${!cart?.length || loading ? "bg-gray-200 text-black/30":"bg-black text-white hover:bg-gray-900"}`} disabled={cart?.length <=0 || loading} onClick={()=>{
                 if(cart?.length){
                  if(User){
                    dispatch(stripePaymentGuest({cart,date:new Date(),id:User}))
@@ -239,7 +239,7 @@ export default function Cart(props: ICartProps) {
                  }
                 }
               }}>
-                Checkout
+                {loading ? "Loading...":"Checkout"}
               </button>
               <button
                 disabled
@@ -379,7 +379,7 @@ export default function Cart(props: ICartProps) {
         </div>
         {/* Checkout Button */}
         {cart.length && <div className="w-full h-[100px]  fixed bottom-0 p-5 lg:hidden flex items-center justify-center z-10 bg-white">
-            <button className="bg-black text-white p-5 w-full rounded-full hover:bg-gray-700" onClick={()=>{
+            <button className={`  p-5 w-full rounded-full ${!cart?.length || loading ? "bg-gray-200 text-black/30":"bg-black text-white hover:bg-gray-900"}`} disabled={cart?.length <=0 || loading} onClick={()=>{
                 if(cart?.length){
                  if(User){
                    dispatch(stripePaymentGuest({cart,date:new Date(),id:User}))
@@ -387,9 +387,11 @@ export default function Cart(props: ICartProps) {
                   dispatch(stripePaymentGuest({cart,date:new Date()}))
                  }
                 }
-              }}>Go to Checkout</button>
+              }}>{loading ? "Loading...":"Checkout"}t</button>
         </div>}
       </div>
     </div>
   );
 }
+
+
