@@ -52,6 +52,7 @@ export default function Cart(props: ICartProps) {
   };
   const [sliderRef, setSliderRef] = React.useState<any>(null);
   const [sliderRefMobile, setSliderRefMobile] = React.useState<any>(null);
+  console.log(authLoading)
 
   return (
     <div className="flex w-full h-full justify-center flex-col 2xl:px-[350px] xl:px-[100px] lg:px-[50px]">
@@ -387,7 +388,7 @@ export default function Cart(props: ICartProps) {
                   dispatch(stripePaymentGuest({cart,date:new Date()}))
                  }
                 }
-              }}>{authLoading ? "Loading...":"Checkout"}t</button>
+              }}>{authLoading ? "Loading...":"Checkout"}</button>
         </div>}
       </div>
     </div>
