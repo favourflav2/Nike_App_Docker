@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Tab, Tabs, useMediaQuery, IconButton, Skeleton } from "@mui/material";
+import { Tab, Tabs, IconButton, Skeleton } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import { Dispatch, UseSelector } from "../../redux/store";
 import dayjs from "dayjs";
@@ -74,8 +74,8 @@ export default function ProfilePage(props: IProfilePageProps) {
   };
 
   // Similar / Trending Stuff
-  const md = useMediaQuery("(min-width:900px)");
-  const lg = useMediaQuery("(min-width:1300px)");
+  // const md = useMediaQuery("(min-width:900px)");
+  // const lg = useMediaQuery("(min-width:1300px)");
 
   const trending2 = {
     dots: true,
@@ -116,44 +116,44 @@ export default function ProfilePage(props: IProfilePageProps) {
   };
   const [sliderRef, setSliderRef] = React.useState<any>(null);
 
-  const trending3 = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    arrows: false,
-    responsive: [
-      {
-        breakpoint: 700,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 900,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true
-        }
-      },
-    ]
-  };
-  const [sliderRef2, setSliderRef2] = React.useState<any>(null);
+  // const trending3 = {
+  //   dots: true,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 5,
+  //   slidesToScroll: 1,
+  //   arrows: false,
+  //   responsive: [
+  //     {
+  //       breakpoint: 700,
+  //       settings: {
+  //         slidesToShow: 2,
+  //         slidesToScroll: 1,
+  //         infinite: true,
+  //         dots: true
+  //       }
+  //     },
+  //     {
+  //       breakpoint: 900,
+  //       settings: {
+  //         slidesToShow: 3,
+  //         slidesToScroll: 1,
+  //         infinite: true,
+  //         dots: true
+  //       }
+  //     },
+  //     {
+  //       breakpoint: 1200,
+  //       settings: {
+  //         slidesToShow: 4,
+  //         slidesToScroll: 1,
+  //         infinite: true,
+  //         dots: true
+  //       }
+  //     },
+  //   ]
+  // };
+  // const [sliderRef2, setSliderRef2] = React.useState<any>(null);
 
   React.useEffect(() => {
     if (likedShoes.length === 0) {

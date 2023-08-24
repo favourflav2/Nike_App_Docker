@@ -6,7 +6,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Link, useNavigate } from "react-router-dom";
 import { Dispatch, UseSelector } from "../../redux/store";
-import {  toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import { setError, signIn } from "../../redux/features/authSlice";
 
 export interface ILoginProps {}
@@ -31,20 +31,20 @@ export default function Login(props: ILoginProps) {
   });
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const dispatch = Dispatch()
-  const navigate = useNavigate()
-  const {error,loading} = UseSelector(state => state.auth)
+  const dispatch = Dispatch();
+  const navigate = useNavigate();
+  const { error, loading } = UseSelector((state) => state.auth);
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    dispatch(setError())
+    dispatch(setError());
 
     if (inputState.email.length >= 1 && inputState.password.length >= 1) {
       if (!errorState.email && !errorState.password && !errorState.privacy) {
-        dispatch(signIn({formData:inputState,navigate}))
+        dispatch(signIn({ formData: inputState, navigate }));
       } else {
         console.log("error state error");
         if (inputState.email.length === 0) {
@@ -104,20 +104,20 @@ export default function Login(props: ILoginProps) {
       });
     }
   }, [inputState.email]);
-  React.useEffect(()=>{
-    if(error){
-      toast.error(error)
+  React.useEffect(() => {
+    if (error) {
+      toast.error(error);
     }
-  },[error])
-  React.useEffect(()=>{
-    dispatch(setError())
-  },[])// eslint-disable-line
+  }, [error]);
+  React.useEffect(() => {
+    dispatch(setError());
+  }, []); // eslint-disable-line
 
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center">
       {/* Content */}
       <form
-        className="2xl:w-[40%] xl:w-[50%] lg:w-[60%] sm:w-[70%] w-[95%] h-full pb-20 flex flex-col justify-center"
+        className="2xl:w-[40%] xl:w-[50%] lg:w-[60%] sm:w-[70%] w-[95%] h-full md:pb-20 pb-10 flex flex-col justify-center md:pt-0 pt-10"
         onSubmit={(e) => handleSubmit(e)}
       >
         {/* Images */}
@@ -128,7 +128,7 @@ export default function Login(props: ILoginProps) {
         <h1 className="text-[25px] font-medium mb-1">Sign In</h1>
         <h1 className="mb-5">
           Dont't Already Have An Account?{" "}
-          <span className="font-semibold cursor-pointer underline hover:text-gray-600" onClick={()=>dispatch(setError())}>
+          <span className="font-semibold cursor-pointer underline hover:text-gray-600" onClick={() => dispatch(setError())}>
             <Link to="/signup">Sign Up</Link>
           </span>
         </h1>
@@ -256,9 +256,19 @@ export default function Login(props: ILoginProps) {
           </div>
         </div>
 
+        { loading &&
+          <h1 className="mt-5 text-xs font-bold leading-5 ">
+            My applications are all deployed on render. Web Services on the free instance type which I am using are automatically spun down after 15
+            minutes of inactivity. So, this will cause a delay in the response of the first request after signing up or logging in. This first request
+            to my backend may take a minute or so.
+          </h1>
+        }
+
         {/* Buttons */}
         <div className="w-full justify-end flex mt-10">
-          <button disabled={loading} className="p-3 bg-black text-white hover:bg-gray-700 cursor-pointer rounded-full font-semibold">{loading ? "Loading..." : "Sign In"}</button>
+          <button disabled={loading} className="p-3 bg-black text-white hover:bg-gray-700 cursor-pointer rounded-full font-semibold">
+            {loading ? "Loading..." : "Sign In"}
+          </button>
         </div>
       </form>
     </div>
