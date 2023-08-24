@@ -203,7 +203,7 @@ export default function Cart(props: ICartProps) {
 
               <Tooltip
                 title="My applications are all deployed on render. Web Services on the free instance type which I am using are automatically spun down after 15
-            minutes of inactivity. So, this will cause a delay in the response if this your the first request to my backend."
+            minutes of inactivity. So, this will cause a delay in the response if this your is the first request to my backend."
               >
                 <button
                   className={` rounded-full p-4 mt-3 mb-3 ${
@@ -349,7 +349,7 @@ export default function Cart(props: ICartProps) {
             placement="top"
             disableFocusListener
             title="My applications are all deployed on render. Web Services on the free instance type which I am using are automatically spun down after 15
-            minutes of inactivity. So, this will cause a delay in the response if this your the first request to my backend."
+            minutes of inactivity. So, this will cause a delay in the response if this is your the first request to my backend."
             >
               <button
                 className={`  p-5 w-full rounded-full ${
