@@ -21,7 +21,7 @@ export interface ICartProps {}
 export default function Cart(props: ICartProps) {
   const [readySale, setReadySale] = React.useState(true);
   const { cart,loading } = UseSelector((state) => state.cart);
-  const { user } = UseSelector((state) => state.auth);
+  const { user, loading:authLoading } = UseSelector((state) => state.auth);
   const [promo, setPromo] = React.useState(false);
   const [inputPromo, setInputPromo] = React.useState("");
   const dispatch = Dispatch()
@@ -230,7 +230,7 @@ export default function Cart(props: ICartProps) {
 
               <hr className="border border-gray-200 mt-4 mb-4" />
 
-              <button className={` rounded-full p-4 mt-3 mb-3 ${!cart?.length || loading ? "bg-gray-200 text-black/30":"bg-black text-white hover:bg-gray-900"}`} disabled={cart?.length <=0 || loading} onClick={()=>{
+              <button className={` rounded-full p-4 mt-3 mb-3 ${!cart?.length || authLoading ? "bg-gray-200 text-black/30":"bg-black text-white hover:bg-gray-900"}`} disabled={cart?.length <=0 || authLoading} onClick={()=>{
                 if(cart?.length){
                  if(User){
                    dispatch(stripePaymentGuest({cart,date:new Date(),id:User}))
@@ -239,7 +239,7 @@ export default function Cart(props: ICartProps) {
                  }
                 }
               }}>
-                {loading ? "Loading...":"Checkout"}
+                {authLoading ? "Loading...":"Checkout"}
               </button>
               <button
                 disabled
@@ -379,7 +379,7 @@ export default function Cart(props: ICartProps) {
         </div>
         {/* Checkout Button */}
         {cart.length && <div className="w-full h-[100px]  fixed bottom-0 p-5 lg:hidden flex items-center justify-center z-10 bg-white">
-            <button className={`  p-5 w-full rounded-full ${!cart?.length || loading ? "bg-gray-200 text-black/30":"bg-black text-white hover:bg-gray-900"}`} disabled={cart?.length <=0 || loading} onClick={()=>{
+            <button className={`  p-5 w-full rounded-full ${!cart?.length || authLoading ? "bg-gray-200 text-black/30":"bg-black text-white hover:bg-gray-900"}`} disabled={cart?.length <=0 || authLoading} onClick={()=>{
                 if(cart?.length){
                  if(User){
                    dispatch(stripePaymentGuest({cart,date:new Date(),id:User}))
@@ -387,7 +387,7 @@ export default function Cart(props: ICartProps) {
                   dispatch(stripePaymentGuest({cart,date:new Date()}))
                  }
                 }
-              }}>{loading ? "Loading...":"Checkout"}t</button>
+              }}>{authLoading ? "Loading...":"Checkout"}t</button>
         </div>}
       </div>
     </div>

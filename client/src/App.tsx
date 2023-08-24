@@ -48,7 +48,7 @@ function App() {
             element={
               <Suspense
                 fallback={
-                  <div className="sm:absolute sm:translate-x-[-50%] sm:translate-y-[-50%] sm:top-[50%] sm:left-[50%] sm:w-full bg-white sm:min-h-[500px] h-full">
+                  <div className="w-full h-[500px] flex items-center justify-center">
                     <div>Loading...</div>
                   </div>
                 }
@@ -64,7 +64,7 @@ function App() {
             element={
               <Suspense
                 fallback={
-                  <div className="sm:absolute sm:translate-x-[-50%] sm:translate-y-[-50%] sm:top-[50%] sm:left-[50%] sm:w-full bg-white sm:min-h-[500px] h-full">
+                  <div className="w-full h-[500px] flex items-center justify-center">
                     <div>Loading...</div>
                   </div>
                 }
@@ -80,7 +80,7 @@ function App() {
             element={
               <Suspense
                 fallback={
-                  <div className="sm:absolute sm:translate-x-[-50%] sm:translate-y-[-50%] sm:top-[50%] sm:left-[50%] sm:w-full bg-white sm:min-h-[500px] h-full">
+                  <div className="w-full h-[500px] flex items-center justify-center">
                     <div>Loading...</div>
                   </div>
                 }
@@ -96,7 +96,7 @@ function App() {
             element={
               <Suspense
                 fallback={
-                  <div className="sm:absolute sm:translate-x-[-50%] sm:translate-y-[-50%] sm:top-[50%] sm:left-[50%] sm:w-full bg-white sm:min-h-[500px] h-full">
+                  <div className="w-full h-[500px] flex items-center justify-center">
                     <div>Loading...</div>
                   </div>
                 }
@@ -112,7 +112,7 @@ function App() {
             element={
               <Suspense
                 fallback={
-                  <div className="sm:absolute sm:translate-x-[-50%] sm:translate-y-[-50%] sm:top-[50%] sm:left-[50%] sm:w-full bg-white sm:min-h-[500px] h-full">
+                  <div className="w-full h-[500px] flex items-center justify-center">
                     <div>Loading...</div>
                   </div>
                 }
@@ -128,7 +128,7 @@ function App() {
             element={
               <Suspense
                 fallback={
-                  <div className="sm:absolute sm:translate-x-[-50%] sm:translate-y-[-50%] sm:top-[50%] sm:left-[50%] sm:w-full bg-white sm:min-h-[500px] h-full">
+                  <div className="w-full h-[500px] flex items-center justify-center">
                     <div>Loading...</div>
                   </div>
                 }
@@ -144,7 +144,7 @@ function App() {
             element={
               <Suspense
                 fallback={
-                  <div className="sm:absolute sm:translate-x-[-50%] sm:translate-y-[-50%] sm:top-[50%] sm:left-[50%] sm:w-full bg-white sm:min-h-[500px] h-full">
+                  <div className="w-full h-[500px] flex items-center justify-center">
                     <div>Loading...</div>
                   </div>
                 }
@@ -162,7 +162,7 @@ function App() {
             element={
               <Suspense
                 fallback={
-                  <div className="sm:absolute sm:translate-x-[-50%] sm:translate-y-[-50%] sm:top-[50%] sm:left-[50%] sm:w-full bg-white sm:min-h-[500px] h-full">
+                  <div className="w-full h-[500px] flex items-center justify-center">
                     <div>Loading...</div>
                   </div>
                 }
@@ -178,7 +178,7 @@ function App() {
             element={
               <Suspense
                 fallback={
-                  <div className="sm:absolute sm:translate-x-[-50%] sm:translate-y-[-50%] sm:top-[50%] sm:left-[50%] sm:w-full bg-white sm:min-h-[500px] h-full">
+                  <div className="w-full h-[500px] flex items-center justify-center">
                     <div>Loading...</div>
                   </div>
                 }
