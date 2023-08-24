@@ -131,7 +131,7 @@ export default function CartCard({ item }: ICartCardProps) {
       </div>
               {/* ----------------------------------------------------------------------------------------------- */}
       {/* Mobile Image and Name Box */}
-      <div className="w-full sm:hidden flex flex-col items-center h-auto">
+      <div className="w-full sm:hidden flex flex-col items-center h-auto pt-3">
         {/* Image Right Side */}
         <div className="w-full h-auto mb-4 flex items-center justify-center">
           <img src={item.img} alt="" className="object-cover max-w-[250px]  w-full " />
@@ -215,7 +215,7 @@ export default function CartCard({ item }: ICartCardProps) {
       </div>
 
       {/* Below Image */}
-      <div className="w-full h-auto flex flex-col mt-4 sm:items-start items-center">
+      <div className="w-full h-auto flex flex-col mt-4 sm:items-start items-center  pb-3">
         <h1 className="font-semibold md:text-base text-[15px]">Shipping</h1>
         <h1 className=" font-normal md:text-base text-[14px]">
           Arrives by Fri, Aug 18 <span className="font-semibold underline cursor-pointer">Edit Location</span>
