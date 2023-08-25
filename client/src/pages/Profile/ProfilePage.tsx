@@ -181,7 +181,6 @@ export default function ProfilePage(props: IProfilePageProps) {
             <Tab label="Inbox" value="inbox" className="md:text-base text-[12px]" />
             <Tab label="Orders" value="orders" className="md:text-base text-[12px]" />
             <Tab label="Favorites" value="favorites" className="md:text-base text-[12px]" />
-            <Tab label="Settings" value="settings" className="md:text-base text-[12px]" />
           </Tabs>
         </div>
 

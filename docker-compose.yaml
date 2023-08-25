@@ -1,0 +1,49 @@
+# Version of the docker compose
+# Remember its docker-compose up --build
+version: '3.8'
+
+# What services are we going to use
+services:
+
+  react:
+    build: ./client
+    container_name: frontend_nikeApp
+    ports:
+    - "3000:3000"
+    # Allows us to see real time updates when are contianers are up
+    volumes:
+      - ./client:/frontend_dockerfile
+      - /frontend_dockerfile/node_modules
+    # Need these for it to work with react
+    stdin_open: true
+    tty: true
+    depends_on:
+      - server
+      - postgres
+
+  # Backend
+  server:
+    build: ./server
+    container_name: backend_nikeApp
+    environment:
+      POSTGRES_URI: postgresql://favour@postgres:5432/nikeApp
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./server:/backend_dockerfile
+      - /backend_dockerfile/node_modules
+    depends_on:
+      - postgres
+
+    # Postgres
+  postgres:
+    build: ./server/postgres
+    container_name: postgres
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_USER: favour
+      POSTGRES_DB: nikeApp
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+    ports:
+      - "5433:5432"
+    

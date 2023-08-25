@@ -156,12 +156,12 @@ export default function FilterPage(props: IFilterPageProps) {
   React.useEffect(() => {
     if (gender) {
       if (gender === "men") {
-        console.log("dispath men");
+       
         dispatch(setMenGender());
       }
       if (gender === "women") {
         dispatch(setWomenGender());
-        console.log("dispath women");
+        
       }
     }
   }, []); // eslint-disable-line

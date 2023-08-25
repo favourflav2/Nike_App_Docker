@@ -122,7 +122,9 @@ export default function Login(props: ILoginProps) {
       >
         {/* Images */}
         <div className="w-full h-auto">
-          <img src={nike} alt="" className="w-[60px]" />
+          <img src={nike} alt="" className="w-[60px]" onClick={()=>{
+            navigate("/")
+          }}/>
         </div>
         {/* Now Lets Make */}
         <h1 className="text-[25px] font-medium mb-1">Sign In</h1>
@@ -257,7 +259,7 @@ export default function Login(props: ILoginProps) {
         </div>
 
         { loading &&
-          <h1 className="mt-5 text-xs font-bold leading-5 ">
+          <h1 className="mt-5 text-xs font-bold leading-5 text-red-400">
             My applications are all deployed on render. Web Services on the free instance type which I am using are automatically spun down after 15
             minutes of inactivity. So, this will cause a delay in the response of the first request after signing up or logging in. This first request
             to my backend may take a minute or so.
