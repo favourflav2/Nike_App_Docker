@@ -535,7 +535,7 @@ export default function ItemDetails(props: IItemDetailsProps) {
           </div>
 
           {/* 3rd Box Shoe Sizes */}
-          <div className="w-full flex flex-col h-auto  mt-10 pb-10">
+          <div className="w-full flex flex-col h-auto  mt-10 ">
             <div className="w-full flex items-center justify-between mb-3">
               <h1 className="font-medium text-[15px]">Select Size</h1>
               <h1 className="font-semibold text-[15px] text-gray-400">Size Guide</h1>
