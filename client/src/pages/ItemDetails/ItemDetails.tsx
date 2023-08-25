@@ -541,7 +541,7 @@ export default function ItemDetails(props: IItemDetailsProps) {
               <h1 className="font-semibold text-[15px] text-gray-400">Size Guide</h1>
             </div>
 
-            <div className="grid w-full h-full grid-cols-2 gap-2">
+            <div className="grid w-full h-auto grid-cols-2 gap-2">
               {sizeData.map((item: any, index: any) => (
                 <button
                   key={index}
